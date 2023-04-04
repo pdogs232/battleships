@@ -8,7 +8,7 @@ if (boatType == 1){
     alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "red"
     document.getElementById(tablecell.id - 10).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - 20).style.backgroundColor = "red"
+    document.getElementById(tablecell.id - -10).style.backgroundColor = "red"
    
 }
 
@@ -16,7 +16,7 @@ if (boatType == 2){
     alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "red"
     document.getElementById(tablecell.id - 1).style.backgroundColor = "red"
-    document.getElementById(tablecell.id + 1).style.backgroundColor = "red"
+    document.getElementById(tablecell.id - -1).style.backgroundColor = "red"
 }
 
 if (boatType == 3){
