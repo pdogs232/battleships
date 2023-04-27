@@ -23,18 +23,19 @@ function rotateShip(){
 
 
 function cellClicked(tablecell){
-    alert(tablecell.id)
+    //alert(tablecell.id)
     var boatPos = tablecell.id
 
-if (boatRotation == 1 && (boatPos.substring(0, 1)!=="0") && (boatPos.substring(0, 1)!=="9") ){
+if (boatRotation == 1 && (boatPos.substring(1, 2)!== "") && (boatPos.substring(0, 1)!=="9") ){ //vertical object 
     //alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - 10).style.backgroundColor = "red"
     document.getElementById(tablecell.id - -10).style.backgroundColor = "red"
+    document.getElementById(tablecell.id - 10).style.backgroundColor = "red"
+    
    
 } else 
 
-if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="0"){
+if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="0"){ // horizontal object
     //alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "red"
     document.getElementById(tablecell.id - 1).style.backgroundColor = "red"
