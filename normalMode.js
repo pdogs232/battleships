@@ -17,7 +17,7 @@ function rotateShip(){
     } else{
         boatRotation = 2
     }
-    alert(boatRotation)
+    //alert(boatRotation)
 }
 
 
@@ -26,20 +26,20 @@ function cellClicked(tablecell){
     //alert(tablecell.id)
     var boatPos = tablecell.id
 
-if (boatRotation == 1 && (boatPos.substring(1, 2)!== "") && (boatPos.substring(0, 1)!=="9") ){ //vertical object 
+if (boatRotation == 1 && (boatPos.substring(1, 2)!== "") && (boatPos.substring(0, 1)!=="9" ) ){ //vertical object 
     //alert(tablecell.id)
-    document.getElementById(tablecell.id).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - -10).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - 10).style.backgroundColor = "red"
+    document.getElementById(tablecell.id).style.backgroundColor = "grey"
+    document.getElementById(tablecell.id - -10).style.backgroundColor = "grey"
+    document.getElementById(tablecell.id - 10).style.backgroundColor = "grey"
     
    
 } else 
 
-if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="0"){ // horizontal object
+if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){ // horizontal object
     //alert(tablecell.id)
-    document.getElementById(tablecell.id).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - 1).style.backgroundColor = "red"
-    document.getElementById(tablecell.id - -1).style.backgroundColor = "red"
+    document.getElementById(tablecell.id).style.backgroundColor = "grey"
+    document.getElementById(tablecell.id - 1).style.backgroundColor = "grey"
+    document.getElementById(tablecell.id - -1).style.backgroundColor = "grey"
 
 } else 
 
