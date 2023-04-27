@@ -1,5 +1,7 @@
 var boatRotation = 1 //Type 1 = vertical Type 2 = horizontal 
 var boatPos;
+var boatCount = []
+var boatNum = 0
 
 
 document.addEventListener("keydown", function (e){
@@ -21,18 +23,23 @@ function rotateShip(){
 }
 
 
-
 function cellClicked(tablecell){
     //alert(tablecell.id)
-    var boatPos = tablecell.id
+    var boatPos = tablecell.id //position of center cell of boat
+    var boatPosTop = boatPos - 10
+    var boatPosBot = boatPos - - 10
+    var boatPosLef = boatPos - 1
+    var boatPosRig = boatPos - - 1
 
 if (boatRotation == 1 && (boatPos.substring(1, 2)!== "") && (boatPos.substring(0, 1)!=="9" ) ){ //vertical object 
     //alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "grey"
     document.getElementById(tablecell.id - -10).style.backgroundColor = "grey"
     document.getElementById(tablecell.id - 10).style.backgroundColor = "grey"
-    
-   
+
+   boatCount[boatNum] = boatPosTop.toString() + boatPos.toString() + boatPosBot.toString()
+   alert (boatCount[boatNum])
+    boatNum++
 } else 
 
 if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){ // horizontal object
@@ -40,6 +47,10 @@ if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1,
     document.getElementById(tablecell.id).style.backgroundColor = "grey"
     document.getElementById(tablecell.id - 1).style.backgroundColor = "grey"
     document.getElementById(tablecell.id - -1).style.backgroundColor = "grey"
+    boatCount[boatNum] = boatPosLef.toString() + boatPos.toString() + boatPosRig.toString()
+    alert (boatCount[boatNum])
+    boatNum++
+
 
 } else 
 
