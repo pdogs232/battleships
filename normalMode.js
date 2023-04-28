@@ -31,7 +31,9 @@ function cellClicked(tablecell){
     var boatPosLef = boatPos - 1
     var boatPosRig = boatPos - - 1
 
-if (boatRotation == 1 && (boatPos.substring(1, 2)!== "") && (boatPos.substring(0, 1)!=="9" ) ){ //vertical object 
+    
+
+if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9"  ) ){ //vertical object 
     //alert(tablecell.id)
     document.getElementById(tablecell.id).style.backgroundColor = "grey"
     document.getElementById(tablecell.id - -10).style.backgroundColor = "grey"
