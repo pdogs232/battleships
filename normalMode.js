@@ -82,10 +82,12 @@ function cellClicked(tablecell){
 
     function shipParamiters(){
         for (i=0;i<5;i++) {
+            var q = boatNum[boatCount]
+            var x = boatNum2[i]
             if (boatNum[boatCount] == boatNum2[i]) {
                 invalid = true
             }
-            else if(boatNum[boatCount].substring(0,2) == boatNum2[i].substring(4,6)){
+            else if( q.substring(0,2) == x.substring(4,6)){
                 invalid = true
             }
 
