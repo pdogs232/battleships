@@ -75,7 +75,6 @@ function cellClicked(tablecell){
 
 
 
-
 } else 
 
     if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0" && invalid == false){ // horizontal object
@@ -88,11 +87,16 @@ function cellClicked(tablecell){
 
 
 } else 
-    { alert("invalid")}
+    { alert("invalid")
+   boatNum[boatCount] = null   
+   boatNum2[boatCount] = "0"
+   boatCount = boatCount - 1
+
+    }
 
 
     function shipParamiters(){
-        for (i=0;i<5;i++) {
+        for (i=0;i<boatCount;i++) {
             var q = boatNum[boatCount]
             var x = boatNum2[i]
 
