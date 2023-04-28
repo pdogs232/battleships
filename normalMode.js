@@ -94,13 +94,11 @@ function cellClicked(tablecell){
 
     }
 
-
     function shipParamiters(){
         for (i=0;i<boatCount;i++) {
             var q = boatNum[boatCount]
             var x = boatNum2[i]
 
-  
              if( q.substring(0,2) == x.substring(0,2) ){
                 invalid = true
             }   
