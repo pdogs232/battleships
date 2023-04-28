@@ -38,16 +38,7 @@ function cellClicked(tablecell){
     var p = 0
     boatCount = boatCount + 1
     
-    if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
-        boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
-        shipParamiters();
-    }
-    
-    
-    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
-        boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
-        shipParamiters();
-    }
+
 
     if (boatPosTop<10) {
         boatPosTop.toString()
@@ -62,6 +53,16 @@ function cellClicked(tablecell){
 
     }
 
+    if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
+        boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
+        shipParamiters();
+    }
+    
+    
+    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
+        boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
+        shipParamiters();
+    }
 
     if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){ //vertical object 
         //alert(tablecell.id)
