@@ -2,7 +2,9 @@ var boatRotation = 1 //Type 1 = vertical Type 2 = horizontal
 var boatPos;
 var boatCount = 0
 var boatNum = []
-var boatNum2 = []
+var boatNum2 = ["0","0","0","0","0"]
+
+
 
 
 document.addEventListener("keydown", function (e){
@@ -33,9 +35,19 @@ function cellClicked(tablecell){
     var boatPosLeft = boatPos - 1
     var boatPosRight = boatPos - - 1
     var invalid = false
+    var p = 0
     boatCount = boatCount + 1
-   boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString()
-   boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight
+    
+    if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
+        boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
+        shipParamiters();
+    }
+    
+    
+    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
+        boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
+        shipParamiters();
+    }
 
     if (boatPosTop<10) {
         boatPosTop.toString()
@@ -50,7 +62,6 @@ function cellClicked(tablecell){
 
     }
 
-    shipParamiters()
 
     if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){ //vertical object 
         //alert(tablecell.id)
@@ -66,12 +77,11 @@ function cellClicked(tablecell){
 
 } else 
 
-    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){ // horizontal object
+    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0" && invalid == false){ // horizontal object
     //alert(tablecell.id)
         document.getElementById(boatPos).style.backgroundColor = "grey"
         document.getElementById(boatPosLeft).style.backgroundColor = "grey"
         document.getElementById(boatPosRight).style.backgroundColor = "grey"
-        boatNumt[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight
         alert (boatNum[boatCount])
 
 
@@ -84,13 +94,42 @@ function cellClicked(tablecell){
         for (i=0;i<5;i++) {
             var q = boatNum[boatCount]
             var x = boatNum2[i]
-            if (boatNum[boatCount] == boatNum2[i]) {
+
+  
+             if( q.substring(0,2) == x.substring(0,2) ){
+                invalid = true
+            }   
+
+            else if( q.substring(0,2) == x.substring(2,4) ){
                 invalid = true
             }
-            else if( q.substring(0,2) == x.substring(4,6)){
+            
+            else if( q.substring(0,2) == x.substring(4,6) ){
                 invalid = true
             }
 
+            else if( q.substring(2,4) == x.substring(0,2) ){
+                invalid = true
+            }
+
+            else if( q.substring(2,4) == x.substring(2,4) ){
+                invalid = true
+            }
+
+            else if( q.substring(2,4) == x.substring(4,6) ){
+                invalid = true
+            }
+
+            else if( q.substring(4,6) == x.substring(0,2) ){
+                invalid = true
+            }
+            else if( q.substring(4,6) == x.substring(2,4) ){
+                invalid = true
+            }
+
+            else if( q.substring(4,6) == x.substring(4,6) ){
+                invalid = true
+            }
 
 
         }
