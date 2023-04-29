@@ -55,13 +55,13 @@ function cellClicked(tablecell){
 
     if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
         boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
-        shipParamiters();
+        shipParameters();
     }
     
     
     if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
         boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
-        shipParamiters();
+        shipParameters();
     }
 
     if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){ //vertical object 
@@ -94,7 +94,7 @@ function cellClicked(tablecell){
 
     }
 
-    function shipParamiters(){
+    function shipParameters(){
         for (i=0;i<boatCount;i++) {
             var q = boatNum[boatCount]
             var x = boatNum2[i]
