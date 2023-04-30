@@ -38,108 +38,110 @@ function cellClicked(tablecell){
     var p = 0
     boatCount = boatCount + 1
     
+    if (boatCount<5) {
+
+        if (boatPosTop<10) {
+            boatPosTop.toString()
+            boatPosTop = "0" + boatPosTop
+        }
+
+        if (boatPos<8) {
+            boatPosLeft.toString()
+            boatPosRight.toString()
+            boatPosLeft = "0" + boatPosLeft
+            boatPosRight = "0" + boatPosRight
+
+        }
+
+        if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
+            boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
+            shipParameters();
+        }
+        
+        
+        if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
+            boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
+            shipParameters();
+        }
+
+        if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){ //vertical object 
+            //alert(tablecell.id)
+            document.getElementById(boatPos).style.backgroundColor = "grey"
+            document.getElementById(boatPosBottom).style.backgroundColor = "grey"
+            document.getElementById(boatPosTop).style.backgroundColor = "grey"
 
 
-    if (boatPosTop<10) {
-        boatPosTop.toString()
-        boatPosTop = "0" + boatPosTop
-    }
-
-    if (boatPos<8) {
-        boatPosLeft.toString()
-        boatPosRight.toString()
-        boatPosLeft = "0" + boatPosLeft
-        boatPosRight = "0" + boatPosRight
-
-    }
-
-    if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){
-        boatNum[boatCount] = boatPosTop + boatPos.toString() + boatPosBottom.toString();
-        shipParameters();
-    }
-    
-    
-    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0"){
-        boatNum[boatCount] = boatPosLeft + boatPos.toString() + boatPosRight;
-        shipParameters();
-    }
-
-    if (boatRotation == 1 && (boatPos.substring(0, 1)!== "0") && (boatPos.substring(0, 1)!=="9") && invalid == false ){ //vertical object 
-        //alert(tablecell.id)
-        document.getElementById(boatPos).style.backgroundColor = "grey"
-        document.getElementById(boatPosBottom).style.backgroundColor = "grey"
-        document.getElementById(boatPosTop).style.backgroundColor = "grey"
-
-
-   alert (boatNum[boatCount])
-
-
-
-} else 
-
-    if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0" && invalid == false){ // horizontal object
-    //alert(tablecell.id)
-        document.getElementById(boatPos).style.backgroundColor = "grey"
-        document.getElementById(boatPosLeft).style.backgroundColor = "grey"
-        document.getElementById(boatPosRight).style.backgroundColor = "grey"
-        alert (boatNum[boatCount])
+    alert (boatNum[boatCount])
 
 
 
     } else 
-        { alert("invalid")
-        boatNum[boatCount] = null   
-        boatNum2[boatCount] = "0"
-        boatCount = boatCount - 1
 
-    }
+        if (boatRotation == 2 && (boatPos.substring(1, 2)!=="9" && (boatPos.substring(1, 2)!=="0")) && boatPos!=="9" && boatPos!=="0" && invalid == false){ // horizontal object
+        //alert(tablecell.id)
+            document.getElementById(boatPos).style.backgroundColor = "grey"
+            document.getElementById(boatPosLeft).style.backgroundColor = "grey"
+            document.getElementById(boatPosRight).style.backgroundColor = "grey"
+            alert (boatNum[boatCount])
 
-    function shipParameters(){
-        for (i=0;i<boatCount;i++) {
-            var q = boatNum[boatCount]
-            var x = boatNum2[i]
 
-             if( q.substring(0,2) == x.substring(0,2) ){
-                invalid = true
-            }   
 
-            else if( q.substring(0,2) == x.substring(2,4) ){
-                invalid = true
-            }
-            
-            else if( q.substring(0,2) == x.substring(4,6) ){
-                invalid = true
-            }
-
-            else if( q.substring(2,4) == x.substring(0,2) ){
-                invalid = true
-            }
-
-            else if( q.substring(2,4) == x.substring(2,4) ){
-                invalid = true
-            }
-
-            else if( q.substring(2,4) == x.substring(4,6) ){
-                invalid = true
-            }
-
-            else if( q.substring(4,6) == x.substring(0,2) ){
-                invalid = true
-            }
-            else if( q.substring(4,6) == x.substring(2,4) ){
-                invalid = true
-            }
-
-            else if( q.substring(4,6) == x.substring(4,6) ){
-                invalid = true
-            }
-
+        } else 
+            { alert("invalid")
+            boatNum[boatCount] = null   
+            boatNum2[boatCount] = "0"
+            boatCount = boatCount - 1
 
         }
+
+        function shipParameters(){
+            for (i=0;i<boatCount;i++) {
+                var q = boatNum[boatCount]
+                var x = boatNum2[i]
+
+                if( q.substring(0,2) == x.substring(0,2) ){
+                    invalid = true
+                }   
+
+                else if( q.substring(0,2) == x.substring(2,4) ){
+                    invalid = true
+                }
+                
+                else if( q.substring(0,2) == x.substring(4,6) ){
+                    invalid = true
+                }
+
+                else if( q.substring(2,4) == x.substring(0,2) ){
+                    invalid = true
+                }
+
+                else if( q.substring(2,4) == x.substring(2,4) ){
+                    invalid = true
+                }
+
+                else if( q.substring(2,4) == x.substring(4,6) ){
+                    invalid = true
+                }
+
+                else if( q.substring(4,6) == x.substring(0,2) ){
+                    invalid = true
+                }
+                else if( q.substring(4,6) == x.substring(2,4) ){
+                    invalid = true
+                }
+
+                else if( q.substring(4,6) == x.substring(4,6) ){
+                    invalid = true
+                }
+
+
+            }
+        }
+    
+        if (invalid = false) {
+        boatNum2[boatCount] =  boatNum[boatCount]
+        }
     }
-
-    boatNum2[boatCount] =  boatNum[boatCount]
-
 
     
    
