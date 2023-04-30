@@ -86,11 +86,11 @@ function cellClicked(tablecell){
 
 
 
-} else 
-    { alert("invalid")
-   boatNum[boatCount] = null   
-   boatNum2[boatCount] = "0"
-   boatCount = boatCount - 1
+    } else 
+        { alert("invalid")
+        boatNum[boatCount] = null   
+        boatNum2[boatCount] = "0"
+        boatCount = boatCount - 1
 
     }
 
