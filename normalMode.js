@@ -44,7 +44,7 @@ function cellClicked(tablecell){
             boatPosTop = "0" + boatPosTop
         }
 
-        if (boatPos<8) {
+        if (boatPos<9) {
             boatPosLeft.toString()
             boatPosRight.toString()
             boatPosLeft = "0" + boatPosLeft
