@@ -4,6 +4,8 @@ var boatCount = 0
 var boatNum = []
 var boatNum2 = ["0","0","0","0","0"]
 
+document.getElementById("guessDiv").style.display = "none"
+
 
 
 
@@ -37,7 +39,7 @@ function cellClicked(tablecell){
     var invalid = false
     boatCount = boatCount + 1
     
-    if (boatCount<5) {
+    if (boatCount<6) {
 
         if (boatPosTop<10) {
             boatPosTop.toString()
@@ -141,7 +143,12 @@ function cellClicked(tablecell){
         
     }
 
-    
+    function submit() {
+        if (boatCount = 5) {
+            document.getElementById("playerDiv").style.display = "none"
+            document.getElementById("guessDiv").style.display = "block"
+        }
+    }
    
 
 
