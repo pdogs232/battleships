@@ -35,6 +35,7 @@ function cellClicked(tablecell){
     var boatPosLeft = boatPos - 1
     var boatPosRight = boatPos - - 1
     var invalid = false
+    var p = 0
     boatCount = boatCount + 1
     
     if (boatCount<5) {
@@ -87,14 +88,14 @@ function cellClicked(tablecell){
 
         } else 
             { alert("invalid")
-            boatNum[boatCount] = 0   
+            boatNum[boatCount] = null   
             boatNum2[boatCount] = "0"
             boatCount = boatCount - 1
 
         }
 
         function shipParameters(){
-            for (i=1;i<boatCount;i++) {
+            for (i=0;i<boatCount;i++) {
                 var q = boatNum[boatCount]
                 var x = boatNum2[i]
 
@@ -137,8 +138,9 @@ function cellClicked(tablecell){
             }
         }
     
+        if (invalid = false) {
         boatNum2[boatCount] =  boatNum[boatCount]
-        
+        }
     }
 
     
