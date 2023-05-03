@@ -3,7 +3,7 @@ var boatPos;
 var boatCount = 0
 var boatNum = []
 var boatNum2 = ["0","0","0","0","0"]
-var bbc = 0;
+var botCount = 0;
 var bbNum = [];
 var bbNum2 = ["0","0","0","0","0"]
 
@@ -40,9 +40,9 @@ function cellClicked(tablecell){
     var boatPosLeft = boatPos - 1
     var boatPosRight = boatPos - - 1
     var invalid = false
-    boatCount = boatCount + 1
     
-    if (boatCount<6) {
+    if (boatCount<5) {
+        boatCount = boatCount + 1
 
         if (boatPosTop<10) {
             boatPosTop.toString()
@@ -148,110 +148,110 @@ function cellClicked(tablecell){
 }
 
 function submit() {
-    if (boatCount = 5) {
+    if (boatCount == 5) {
         document.getElementById("playerDiv").style.display = "none"
         document.getElementById("guessDiv").style.display = "block"
         
         for (f = 1; f<6; f++) {
-            var bp = Math.floor((Math.random() * 99) + 0) //position of center cell of boat
-            var bpt = bp - 10
-            var bpb = bp - - 10
-            var bpl = bp - 1
-            var bpr = bp - - 1
-            var binvalid= false
-            var bboatRotation = Math.floor((Math.random() * 2) + 1)
-            bbc = bbc + 1
-            bp = bp.toString()
+            var botBoatPos= Math.floor((Math.random() * 99) + 0) //position of center cell of boat
+            var botPosTop = botBoatPos- 10
+            var botPosBottom = botBoatPos- - 10
+            var botPosLeft = botBoatPos- 1
+            var botPosRight = botBoatPos- - 1
+            var bInvalid= false
+            var botRotation = Math.floor((Math.random() * 2) + 1)
+            botCount = botCount + 1
+            botBoatPos= botBoatPos.toString()
 
-            if (bp<10){
-                bp = "0"+bp
+            if (botBoatPos<10){
+                botBoatPos= "0"+botBoatPos
             }
         
-            if (bpt<10) {
-                bpt = "0" + bpt
+            if (botPosTop<10) {
+                botPosTop = "0" + botPosTop
             }
         
-            if (bp<9) {
-                bpl = "0" + bpl.toString()
-                bpr = "0" + bpr.toString()
+            if (botBoatPos<9) {
+                botPosLeft = "0" + botPosLeft.toString()
+                botPosRight = "0" + botPosRight.toString()
         
             }
                 
-            if (bboatRotation == 1 && (bp.substring(0, 1)!== "0") && (bp.substring(0, 1)!=="9") && binvalid == false ){
-                bbNum[bbc] = bpt.toString() + bp.toString() + bpb.toString();
+            if (botRotation == 1 && (botBoatPos.substring(0, 1)!== "0") && (botBoatPos.substring(0, 1)!=="9") && bInvalid == false ){
+                bbNum[botCount] = botPosTop.toString() + botBoatPos.toString() + botPosBottom.toString();
                 bshipParameters();
             }
                 
                 
-            if (bboatRotation == 2 && (bp.substring(1, 2)!=="9" && (bp.substring(1, 2)!=="0")) && bp!=="9" && bp!=="0" && binvalid == false){
-                bbNum[bbc] = bpl.toString() + bp.toString() + bpr.toString();
+            if (botRotation == 2 && (botBoatPos.substring(1, 2)!=="9" && (botBoatPos.substring(1, 2)!=="0")) && botBoatPos!=="9" && botBoatPos!=="0" && bInvalid == false){
+                bbNum[botCount] = botPosLeft.toString() + botBoatPos.toString() + botPosRight.toString();
                 bshipParameters();
             }
 
-            if (bboatRotation == 1 && (bp.substring(0, 1)!== "0") && (bp.substring(0, 1)!=="9") && binvalid == false ){ //vertical object 
-                alert (bbNum[bbc])
+            if (botRotation == 1 && (botBoatPos.substring(0, 1)!== "0") && (botBoatPos.substring(0, 1)!=="9") && bInvalid == false ){ //vertical object 
+                alert (bbNum[botCount])
         
             } else 
         
-            if (bboatRotation == 2 && (bp.substring(1, 2)!=="9" && (bp.substring(1, 2)!=="0")) && bp!=="9" && bp!=="0" && binvalid == false){ // horizontal object
-                alert (bbNum[bbc])
+            if (botRotation == 2 && (botBoatPos.substring(1, 2)!=="9" && (botBoatPos.substring(1, 2)!=="0")) && botBoatPos!=="9" && botBoatPos!=="0" && bInvalid == false){ // horizontal object
+                alert (bbNum[botCount])
         
         
         
             } 
             else {         
                 alert("invalid")
-                bbNum[bbc] = null   
-                bbNum2[bbc] = "0"
-                bbc = bbc - 1
+                bbNum[botCount] = null   
+                bbNum2[botCount] = "0"
+                botCount = botCount - 1
             
             }
             function bshipParameters(){
-                for (i=1;i<bbc;i++) {
-                    var y = bbNum[bbc]
+                for (i=1;i<botCount;i++) {
+                    var y = bbNum[botCount]
                     var z = bbNum2[i]
     
                     if( y.substring(0,2) == z.substring(0,2) ){
-                        binvalid = true
+                        bInvalid = true
                     }   
     
                     else if( y.substring(0,2) == z.substring(2,4) ){
-                        binvalid = true
+                        bInvalid = true
                     }
                     
                     else if( y.substring(0,2) == z.substring(4,6) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
                     else if( y.substring(2,4) == z.substring(0,2) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
                     else if( y.substring(2,4) == z.substring(2,4) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
                     else if( y.substring(2,4) == z.substring(4,6) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
                     else if( y.substring(4,6) == z.substring(0,2) ){
-                        binvalid = true
+                        bInvalid = true
                     }
                     else if( y.substring(4,6) == z.substring(2,4) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
                     else if( y.substring(4,6) == z.substring(4,6) ){
-                        binvalid = true
+                        bInvalid = true
                     }
     
     
                 }
             }
 
-            bbNum2[bbc] =  bbNum[bbc]
-            f = bbc
+            bbNum2[botCount] =  bbNum[botCount]
+            f = botCount
 
 
 
