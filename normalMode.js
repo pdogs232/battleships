@@ -7,11 +7,13 @@ var botCount = 0;
 var bbNum = [];
 var bbNum2 = ["0","0","0","0","0","0"]
 var submitt = false
+var hitcellnum = 0
+var firedatabase = []
+var allshots = []
+var allshotsCount = 0
+var playerTurn = true
 
 document.getElementById("guessDiv").style.display = "none"
-
-
-
 
 document.addEventListener("keydown", function (e){
     if (e.keyCode === 82) {
@@ -270,16 +272,110 @@ function submit() {
                 
             }
 
-            bbNum2[botCount] =  bbNum[botCount]
-            f = botCount
+                bbNum2[botCount] =  bbNum[botCount]
+                f = botCount
 
 
 
         }
 
     }
-
 }
+
+function cellClicked2(tablecell2) {
+    var fire = tablecell2.id
+    var alreadyClicked = false
+
+
+    for (i=0; i<allshotsCount + 1 && alreadyClicked == false; i++) {
+        if (fire == allshots[i] && playerTurn == false ) {
+            alreadyClicked = true
+        }
+
+        else {
+        }
+    }
+
+    if (hitcellnum < 15 && alreadyClicked == false && playerTurn == true) {
+    
+        var hit = false
+        var m = 1
+
+
+        for (i=0; i<5 && hit == false;i++){
+
+            var j = bbNum[m]
+
+
+            if( fire.substring(0,2) == j.substring(0,2) ){
+                hit = true
+            }   
+
+            else if( fire.substring(0,2) == j.substring(2,4) ){
+                hit = true
+            }
+                    
+            else if( fire.substring(0,2) == j.substring(4,6) ){
+                hit = true
+            }
+    
+            else if( fire.substring(0,2) == j.substring(0,2) ){
+                hit = true
+            }
+    
+            else if( fire.substring(0,2) == j.substring(2,4) ){
+                hit = true
+            }
+    
+            else if( fire.substring(0,2) == j.substring(4,6) ){
+                hit = true
+            }
+    
+            else if( fire.substring(0,2) == j.substring(0,2) ){
+                hit = true
+            }
+
+            else if( fire.substring(0,2) == j.substring(2,4) ){
+                hit = true
+            }
+    
+            else if( fire.substring(0,2) == j.substring(4,6) ){
+                hit = true
+            } 
+
+            else{
+            }
+            m = m + 1
+        }
+        
+        if (hit == true) {
+            document.getElementById(fire).style.backgroundColor = "red"
+            hitcellnum =  hitcellnum + 1
+            firedatabase[hitcellnum] = fire
+        }
+
+        else {
+            document.getElementById(fire).style.backgroundColor = "white"
+        }
+
+        allshotsCount = allshotsCount + 1
+        allshots[allshotsCount] = fire
+        playerTurn = false
+
+    }
+
+
+
+    function botGuess() {
+        document.getElementById("playerDiv").style.display = "block"
+        document.getElementById("guessDiv").style.display = "none"
+        playerTurn = true
+    }
+    
+
+}  
+
+
    
 
 
