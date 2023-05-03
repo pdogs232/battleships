@@ -150,8 +150,8 @@ function cellClicked(tablecell){
 
 function submit() {
     if (boatCount == 5 && submitt == false) {
-        //document.getElementById("playerDiv").style.display = "none"
-        //document.getElementById("guessDiv").style.display = "block"
+        document.getElementById("playerDiv").style.display = "none"
+        document.getElementById("guessDiv").style.display = "block"
 
         submitt = true
         
@@ -192,9 +192,9 @@ function submit() {
             }
 
             if (botRotation == 1 && (botBoatPos.substring(0, 1)!== "0") && (botBoatPos.substring(0, 1)!=="9") && bInvalid == false ){ //vertical object 
-                document.getElementById(botPosTop).style.backgroundColor = "brown"
-                document.getElementById(botBoatPos).style.backgroundColor = "brown"
-                document.getElementById(botPosBottom).style.backgroundColor = "brown"
+                document.getElementById(botPosTop + "a").style.backgroundColor = "brown"
+                document.getElementById(botBoatPos + "a").style.backgroundColor = "brown"
+                document.getElementById(botPosBottom + "a").style.backgroundColor = "brown"
                 alert (bbNum[botCount])
 
                 
@@ -202,9 +202,9 @@ function submit() {
             } else 
         
             if (botRotation == 2 && (botBoatPos.substring(1, 2)!=="9" && (botBoatPos.substring(1, 2)!=="0")) && botBoatPos!=="9" && botBoatPos!=="0" && bInvalid == false){ // horizontal object
-                document.getElementById(botPosLeft).style.backgroundColor = "brown"
-                document.getElementById(botBoatPos).style.backgroundColor = "brown"
-                document.getElementById(botPosRight).style.backgroundColor = "brown"
+                document.getElementById(botPosLeft + "a").style.backgroundColor = "brown"
+                document.getElementById(botBoatPos + "a").style.backgroundColor = "brown"
+                document.getElementById(botPosRight + "a").style.backgroundColor = "brown"
                 alert (bbNum[botCount])
 
         
