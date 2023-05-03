@@ -5,7 +5,8 @@ var boatNum = []
 var boatNum2 = ["0","0","0","0","0"]
 var botCount = 0;
 var bbNum = [];
-var bbNum2 = ["0","0","0","0","0"]
+var bbNum2 = ["0","0","0","0","0","0"]
+var submitt = false
 
 document.getElementById("guessDiv").style.display = "none"
 
@@ -92,7 +93,7 @@ function cellClicked(tablecell){
 
         } else 
             { alert("invalid")
-            boatNum[boatCount] = null   
+            boatNum[boatCount] = 0   
             boatNum2[boatCount] = "0"
             boatCount = boatCount - 1
 
@@ -148,9 +149,11 @@ function cellClicked(tablecell){
 }
 
 function submit() {
-    if (boatCount == 5) {
+    if (boatCount == 5 && submitt == false) {
         //document.getElementById("playerDiv").style.display = "none"
         //document.getElementById("guessDiv").style.display = "block"
+
+        submitt = true
         
         for (f = 1; f<6; f++) {
             var botBoatPos= Math.floor((Math.random() * 99) + 0) //position of center cell of boat
@@ -189,20 +192,28 @@ function submit() {
             }
 
             if (botRotation == 1 && (botBoatPos.substring(0, 1)!== "0") && (botBoatPos.substring(0, 1)!=="9") && bInvalid == false ){ //vertical object 
+                document.getElementById(botPosTop).style.backgroundColor = "brown"
+                document.getElementById(botBoatPos).style.backgroundColor = "brown"
+                document.getElementById(botPosBottom).style.backgroundColor = "brown"
                 alert (bbNum[botCount])
+
                 
         
             } else 
         
             if (botRotation == 2 && (botBoatPos.substring(1, 2)!=="9" && (botBoatPos.substring(1, 2)!=="0")) && botBoatPos!=="9" && botBoatPos!=="0" && bInvalid == false){ // horizontal object
+                document.getElementById(botPosLeft).style.backgroundColor = "brown"
+                document.getElementById(botBoatPos).style.backgroundColor = "brown"
+                document.getElementById(botPosRight).style.backgroundColor = "brown"
                 alert (bbNum[botCount])
+
         
         
         
             } 
             else {         
                 alert("invalid")
-                bbNum[botCount] = null   
+                bbNum[botCount] = 0   
                 bbNum2[botCount] = "0"
                 botCount = botCount - 1
             
@@ -239,17 +250,16 @@ function submit() {
                     else if( y.substring(4,6) == z.substring(0,2) ){
                         bInvalid = true
                     }
+
                     else if( y.substring(4,6) == z.substring(2,4) ){
                         bInvalid = true
                     }
     
                     else if( y.substring(4,6) == z.substring(4,6) ){
                         bInvalid = true
-                    } else{
-                        document.getElementById(y.substring(0,2)).style.backgroundColor = "brown"
-                        document.getElementById(y.substring(2,4)).style.backgroundColor = "brown"
-                        document.getElementById(y.substring(4,6)).style.backgroundColor = "brown"
+                    } 
 
+                    else{
                     }
 
                    
