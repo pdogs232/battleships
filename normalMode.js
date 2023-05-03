@@ -149,8 +149,8 @@ function cellClicked(tablecell){
 
 function submit() {
     if (boatCount == 5) {
-        document.getElementById("playerDiv").style.display = "none"
-        document.getElementById("guessDiv").style.display = "block"
+        //document.getElementById("playerDiv").style.display = "none"
+        //document.getElementById("guessDiv").style.display = "block"
         
         for (f = 1; f<6; f++) {
             var botBoatPos= Math.floor((Math.random() * 99) + 0) //position of center cell of boat
@@ -190,6 +190,7 @@ function submit() {
 
             if (botRotation == 1 && (botBoatPos.substring(0, 1)!== "0") && (botBoatPos.substring(0, 1)!=="9") && bInvalid == false ){ //vertical object 
                 alert (bbNum[botCount])
+                
         
             } else 
         
@@ -207,7 +208,7 @@ function submit() {
             
             }
             function bshipParameters(){
-                for (i=1;i<botCount;i++) {
+                for (i=1;i<botCount+1;i++) {
                     var y = bbNum[botCount]
                     var z = bbNum2[i]
     
@@ -244,10 +245,19 @@ function submit() {
     
                     else if( y.substring(4,6) == z.substring(4,6) ){
                         bInvalid = true
+                    } else{
+                        document.getElementById(y.substring(0,2)).style.backgroundColor = "brown"
+                        document.getElementById(y.substring(2,4)).style.backgroundColor = "brown"
+                        document.getElementById(y.substring(4,6)).style.backgroundColor = "brown"
+
                     }
+
+                   
     
     
                 }
+
+                
             }
 
             bbNum2[botCount] =  bbNum[botCount]
