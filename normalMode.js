@@ -12,6 +12,8 @@ var firedatabase = []
 var allshots = []
 var allshotsCount = 0
 var playerTurn = true
+var botfirehistory = []
+var botfirecount = 0
 
 document.getElementById("guessDiv").style.display = "none"
 
@@ -361,21 +363,48 @@ function cellClicked2(tablecell2) {
         allshotsCount = allshotsCount + 1
         allshots[allshotsCount] = fire
         playerTurn = false
+        botGuess()
 
     }
-
-
-
-    function botGuess() {
-        document.getElementById("playerDiv").style.display = "block"
-        document.getElementById("guessDiv").style.display = "none"
-        playerTurn = true
-    }
-    
+ 
 
 }  
 
 
-   
+function botGuess () {
+    document.getElementById("playerDiv").style.display = "block";
+    document.getElementById("guessDiv").style.display = "none";
+    playerTurn = true;
+    var fire = Math.floor((Math.random() * 99) + 0)
+    var check = false
+    var hit = false
+
+    for (i=0;i<botfirecount+1;i++){
+        if (fire == botfirehistory[i]) {
+            check = true
+        }
+    }
+
+    if (check == false && botfirecount  < 15 ) {
+        for (i=0;i<botfirecount+1;i++){
+            if (fire == boatNum[i]) {
+                hit = true
+            }
+        }
+
+        if (hit == true) {
+            document.getElementById(fire).style.backgroundColor = "red"
+        }
+
+        else {
+            document.getElementById(fire).style.backgroundColor = "white"
+        }
+        
+        botfirecount = botfirecount + 1
+    }
+
+    document.getElementById("playerDiv").style.display = "none";
+    document.getElementById("guessDiv").style.display = "block";
 
 
+}
