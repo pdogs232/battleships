@@ -14,6 +14,7 @@ var allshotsCount = 0
 var playerTurn = true
 var botfirehistory = []
 var botfirecount = 0
+var hits = 0
 
 document.getElementById("guessDiv").style.display = "none"
 
@@ -282,6 +283,10 @@ function submit() {
         }
 
     }
+    else {
+        document.getElementById("playerDiv").style.display = "none";
+        document.getElementById("guessDiv").style.display = "block";
+    }
 }
 
 function cellClicked2(tablecell2) {
@@ -363,8 +368,10 @@ function cellClicked2(tablecell2) {
         allshotsCount = allshotsCount + 1
         allshots[allshotsCount] = fire
         playerTurn = false
-        botGuess()
 
+    }
+    else if (hitcellnum == 14){
+        alert("You Wins")
     }
  
 
@@ -372,39 +379,102 @@ function cellClicked2(tablecell2) {
 
 
 function botGuess () {
-    document.getElementById("playerDiv").style.display = "block";
-    document.getElementById("guessDiv").style.display = "none";
-    playerTurn = true;
-    var fire = Math.floor((Math.random() * 99) + 0)
-    var check = false
-    var hit = false
+    
+    if (hits < 15) {
+        document.getElementById("playerDiv").style.display = "block";
+        document.getElementById("guessDiv").style.display = "none";
+        playerTurn = true;
+        var fire = Math.floor((Math.random() * 99) + 0)
+        var check = false
+        var hit = false
+        
 
-    for (i=0;i<botfirecount+1;i++){
-        if (fire == botfirehistory[i]) {
-            check = true
-        }
-    }
-
-    if (check == false && botfirecount  < 15 ) {
         for (i=0;i<botfirecount+1;i++){
-            if (fire == boatNum[i]) {
-                hit = true
+            if (fire == botfirehistory[i]) {
+                check = true
             }
         }
 
-        if (hit == true) {
-            document.getElementById(fire).style.backgroundColor = "red"
+        if (fire < 10) {
+            fire = "0" + fire
+        }
+
+
+        if (check == false) {
+            
+            for (i=1; i<6; i++){
+
+                var j = boatNum[i]
+        
+        
+                if ( fire == j.substring(0,2) ){
+                    hit = true
+                }   
+        
+                else if( fire == j.substring(2,4) ){
+                    hit = true
+                }
+                            
+                else if( fire == j.substring(4,6) ){
+                    hit = true
+                }
+            
+                else if( fire == j.substring(0,2) ){
+                    hit = true
+                }
+            
+                else if( fire == j.substring(2,4) ){
+                    hit = true
+                }
+            
+                else if( fire == j.substring(4,6) ){
+                    hit = true
+                }
+            
+                else if( fire == j.substring(0,2) ){
+                    hit = true
+                }
+        
+                else if( fire == j.substring(2,4) ){
+                    hit = true
+                }
+            
+                else if( fire == j.substring(4,6) ){
+                    hit = true
+                } 
+        
+                else{
+
+                }
+            }
+
+            if (hit == true) {
+                document.getElementById(fire).style.backgroundColor = "red"
+                hits = hits + 1
+            }
+
+            else {
+                document.getElementById(fire).style.backgroundColor = "white"
+            }
+            
+            botfirecount = botfirecount + 1
+            botfirehistory[botfirecount] = fire
+
         }
 
         else {
-            document.getElementById(fire).style.backgroundColor = "white"
+            botGuess()
         }
-        
-        botfirecount = botfirecount + 1
+
+
+
     }
 
-    document.getElementById("playerDiv").style.display = "none";
-    document.getElementById("guessDiv").style.display = "block";
+    else if (hits == 15) {
+        alert("Bot Wins")
+    }
+
+
 
 
 }
