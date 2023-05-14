@@ -15,6 +15,8 @@ var playerTurn = true
 var botfirehistory = []
 var botfirecount = 0
 var hits = 0
+var hitcheck1 = 0
+var hitcheck2 = 0
 
 document.getElementById("guessDiv").style.display = "none"
 
@@ -371,7 +373,7 @@ function cellClicked2(tablecell2) {
 
     }
     else if (hitcellnum == 14){
-        alert("You Wins")
+        alert("You Win")
     }
  
 
@@ -379,21 +381,174 @@ function cellClicked2(tablecell2) {
 
 
 function botGuess () {
+    if (hits<15) {
+        var l = 0
+        var hit = false
+        var lastShot = []
+
+        for (i=1; i<5; i++){
+            lastShot[i] = botfirehistory[botfirecount- l] 
+            l = l + 1
+        }
+
+        for (i=1; i<6; i++){
+
+            var j = boatNum[i]
+            var h = lastShot = [i]
+        
+            if ( h == j.substring(0,2) ){
+                hit = true
+            }   
+        
+            else if( h == j.substring(2,4) ){
+                hit = true
+            }
+                            
+            else if( h == j.substring(4,6) ){
+                hit = true
+            }
+            
+            else if( h == j.substring(0,2) ){
+                hit = true
+            }
+            
+            else if( h == j.substring(2,4) ){
+                hit = true
+            }
+            
+            else if( h == j.substring(4,6) ){
+                hit = true
+            }
+            
+            else if( h == j.substring(0,2) ){
+                hit = true
+            }
+        
+            else if( h == j.substring(2,4) ){
+                hit = true
+            }
+            
+            else if( h == j.substring(4,6) ){
+                hit = true
+            } 
+
+        }
+
+        if (hit == true ) {
+            hitBoatGuess ()
+        }
+        else {
+            randomGuess ()
+        }
     
-    if (hits < 15) {
+    }
+
+    else if (hits == 15) {
+        alert("Bot Wins")
+    }
+
+}
+
+
+
+function hitBoatGuess () {
+    var nigger = Math.floor((Math.random() * 4) + 1)
+    
+    if (nigger == 1) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (nigger == 2) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (nigger == 3) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (nigger == 4) {
+        fire = botfirehistory[botfirecount] -1
+    }
+
+    for (i=1; i<5; i++){
+
+        var j = boatNum[i]
+
+
+        if ( fire == j.substring(0,2) ){
+            hit = true
+        }   
+
+        else if( fire == j.substring(2,4) ){
+            hit = true
+        }
+                    
+        else if( fire == j.substring(4,6) ){
+            hit = true
+        }
+    
+        else if( fire == j.substring(0,2) ){
+            hit = true
+        }
+    
+        else if( fire == j.substring(2,4) ){
+            hit = true
+        }
+    
+        else if( fire == j.substring(4,6) ){
+            hit = true
+        }
+    
+        else if( fire == j.substring(0,2) ){
+            hit = true
+        }
+
+        else if( fire == j.substring(2,4) ){
+            hit = true
+        }
+    
+        else if( fire == j.substring(4,6) ){
+            hit = true
+        } 
+
+        else{
+
+        }
+    }
+
+    if (hit == true) {
+        document.getElementById(fire).style.backgroundColor = "red"
+        hits = hits + 1
+        
+    }
+
+    else {
+        document.getElementById(fire).style.backgroundColor = "white"
+
+    }
+    
+    botfirecount = botfirecount + 1
+    botfirehistory[botfirecount] = fire
+    
+}
+
+
+
+
+function randomGuess () {
+    
         document.getElementById("playerDiv").style.display = "block";
         document.getElementById("guessDiv").style.display = "none";
         playerTurn = true;
         var fire = Math.floor((Math.random() * 99) + 0)
         var check = false
         var hit = false
-        
+
+
 
         for (i=0;i<botfirecount+1;i++){
             if (fire == botfirehistory[i]) {
                 check = true
             }
         }
+
 
         if (fire < 10) {
             fire = "0" + fire
@@ -451,10 +606,12 @@ function botGuess () {
             if (hit == true) {
                 document.getElementById(fire).style.backgroundColor = "red"
                 hits = hits + 1
+                
             }
 
             else {
                 document.getElementById(fire).style.backgroundColor = "white"
+
             }
             
             botfirecount = botfirecount + 1
@@ -463,18 +620,6 @@ function botGuess () {
         }
 
         else {
-            botGuess()
+            randomGuess()
         }
-
-
-
     }
-
-    else if (hits == 15) {
-        alert("Bot Wins")
-    }
-
-
-
-
-}
