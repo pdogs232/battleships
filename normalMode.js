@@ -14,9 +14,9 @@ var allshotsCount = 0
 var playerTurn = true
 var botfirehistory = []
 var botfirecount = 0
+var botLastShot = []
+var botHitCount = 0
 var hits = 0
-var hitcheck1 = 0
-var hitcheck2 = 0
 
 document.getElementById("guessDiv").style.display = "none"
 
@@ -384,26 +384,25 @@ function botGuess () {
     if (hits<15) {
         var l = 0
         var hit = false
-        var lastShot = []
 
         for (i=1; i<5; i++){
-            lastShot[i] = botfirehistory[botfirecount- l] 
+            botLastShot[i] = botfirehistory[botfirecount - l] 
             l = l + 1
         }
 
         for (i=1; i<6; i++){
 
             var j = boatNum[i]
-            var h = lastShot = [i]
-        
+            var h = botLastShot [botfirecount]
+            
             if ( h == j.substring(0,2) ){
                 hit = true
             }   
-        
+            
             else if( h == j.substring(2,4) ){
                 hit = true
             }
-                            
+                                
             else if( h == j.substring(4,6) ){
                 hit = true
             }
@@ -411,23 +410,23 @@ function botGuess () {
             else if( h == j.substring(0,2) ){
                 hit = true
             }
-            
+                
             else if( h == j.substring(2,4) ){
                 hit = true
             }
-            
+                
             else if( h == j.substring(4,6) ){
                 hit = true
             }
-            
+                
             else if( h == j.substring(0,2) ){
                 hit = true
             }
-        
+            
             else if( h == j.substring(2,4) ){
                 hit = true
             }
-            
+                
             else if( h == j.substring(4,6) ){
                 hit = true
             } 
@@ -436,9 +435,11 @@ function botGuess () {
 
         if (hit == true ) {
             hitBoatGuess ()
+            botfirecount = botfirecount + 1
         }
         else {
             randomGuess ()
+            botfirecount = botfirecount + 1
         }
     
     }
@@ -452,19 +453,19 @@ function botGuess () {
 
 
 function hitBoatGuess () {
-    var nigger = Math.floor((Math.random() * 4) + 1)
+    var random = Math.floor((Math.random() * 4) + 1)
     
-    if (nigger == 1) {
-        fire = botfirehistory[botfirecount] -1
+    if (random == 1) {
+        fire = botfirehistory[botfirecount] - 1
     }
-    else if (nigger == 2) {
-        fire = botfirehistory[botfirecount] -1
+    else if (random == 2) {
+        fire = botfirehistory[botfirecount] - - 1
     }
-    else if (nigger == 3) {
-        fire = botfirehistory[botfirecount] -1
+    else if (random == 3) {
+        fire = botfirehistory[botfirecount] - 10
     }
-    else if (nigger == 4) {
-        fire = botfirehistory[botfirecount] -1
+    else if (random == 4) {
+        fire = botfirehistory[botfirecount] - - 10
     }
 
     for (i=1; i<5; i++){
