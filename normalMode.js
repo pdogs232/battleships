@@ -457,20 +457,6 @@ function botGuess () {
 
 function hitBoatGuess () {
 
-    var peter = Math.floor((Math.random() * 4) + 1)
-    
-    if (peter == 1) {
-        fire = botfirehistory[botfirecount] -1
-    }
-    else if (peter == 2) {
-        fire = botfirehistory[botfirecount] -1
-    }
-    else if (peter == 3) {
-        fire = botfirehistory[botfirecount] -1
-    }
-    else if (peter == 4) {
-        fire = botfirehistory[botfirecount] -1
-
     var random = Math.floor((Math.random() * 4) + 1)
     var check = false;
     var hit = false
@@ -573,92 +559,90 @@ function hitBoatGuess () {
 
 function randomGuess () {
     
-        playerTurn = true;
-        var fire = Math.floor((Math.random() * 99) + 0)
-        var check = false
-        var hit = false
+    playerTurn = true;
+    var fire = Math.floor((Math.random() * 99) + 0)
+    var check = false
+    var hit = false
 
         
-        for (i=0;i<botfirecount+1;i++){
-            if (fire == botfirehistory[i]) {
-                check = true
-            }
+    for (i=0;i<botfirecount+1;i++){
+        if (fire == botfirehistory[i]) {
+            check = true
         }
-
-
-        if (fire < 10) {
-            fire = "0" + fire
-        }
-
-
-        if (check == false) {
-            
-            for (i=1; i<6; i++){
-
-                var j = boatNum[i]
-        
-        
-                if ( fire == j.substring(0,2) ){
-                    hit = true
-                }   
-        
-                else if( fire == j.substring(2,4) ){
-                    hit = true
-                }
-                            
-                else if( fire == j.substring(4,6) ){
-                    hit = true
-                }
-            
-                else if( fire == j.substring(0,2) ){
-                    hit = true
-                }
-            
-                else if( fire == j.substring(2,4) ){
-                    hit = true
-                }
-            
-                else if( fire == j.substring(4,6) ){
-                    hit = true
-                }
-            
-                else if( fire == j.substring(0,2) ){
-                    hit = true
-                }
-        
-                else if( fire == j.substring(2,4) ){
-                    hit = true
-                }
-            
-                else if( fire == j.substring(4,6) ){
-                    hit = true
-                } 
-        
-                else{
-
-                }
-            }
-
-            if (hit == true) {
-                document.getElementById(fire).style.backgroundColor = "red"
-                hits = hits + 1
-                
-            }
-
-            else {
-                document.getElementById(fire).style.backgroundColor = "white"
-
-            }
-            
-            botfirecount = botfirecount + 1
-            botfirehistory[botfirecount] = fire
-
-        }
-
-        else {
-            randomGuess()
-        }
-
-        document.getElementById("playerDiv").style.display = "block";
-        document.getElementById("guessDiv").style.display = "none";
     }
+
+
+    if (fire < 10) {
+        fire = "0" + fire
+    }
+
+
+    if (check == false) {
+            
+        for (i=1; i<6; i++){
+
+            var j = boatNum[i]
+        
+        
+            if ( fire == j.substring(0,2) ){
+                hit = true
+            }   
+        
+            else if( fire == j.substring(2,4) ){
+                hit = true
+            }
+                            
+            else if( fire == j.substring(4,6) ){
+                hit = true
+            }
+            
+            else if( fire == j.substring(0,2) ){
+                hit = true
+            }
+            
+            else if( fire == j.substring(2,4) ){
+                hit = true
+            }
+            
+            else if( fire == j.substring(4,6) ){
+                hit = true
+            }
+            
+            else if( fire == j.substring(0,2) ){
+                hit = true
+            }
+        
+            else if( fire == j.substring(2,4) ){
+                hit = true
+            }
+            
+            else if( fire == j.substring(4,6) ){
+                hit = true
+            } 
+        
+            else{
+
+            }
+        }
+
+        if (hit == true) {
+            document.getElementById(fire).style.backgroundColor = "red"
+            hits = hits + 1    
+        }
+
+         else {
+            document.getElementById(fire).style.backgroundColor = "white"
+        }
+            
+        botfirecount = botfirecount + 1
+        botfirehistory[botfirecount] = fire
+
+    }
+
+    else {
+        randomGuess()
+    }
+
+    document.getElementById("playerDiv").style.display = "block";
+    document.getElementById("guessDiv").style.display = "none";
+}
