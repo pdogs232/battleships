@@ -452,18 +452,18 @@ function botGuess () {
 
 
 function hitBoatGuess () {
-    var nigger = Math.floor((Math.random() * 4) + 1)
+    var peter = Math.floor((Math.random() * 4) + 1)
     
-    if (nigger == 1) {
+    if (peter == 1) {
         fire = botfirehistory[botfirecount] -1
     }
-    else if (nigger == 2) {
+    else if (peter == 2) {
         fire = botfirehistory[botfirecount] -1
     }
-    else if (nigger == 3) {
+    else if (peter == 3) {
         fire = botfirehistory[botfirecount] -1
     }
-    else if (nigger == 4) {
+    else if (peter == 4) {
         fire = botfirehistory[botfirecount] -1
     }
 
