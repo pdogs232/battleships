@@ -456,6 +456,21 @@ function botGuess () {
 
 
 function hitBoatGuess () {
+
+    var peter = Math.floor((Math.random() * 4) + 1)
+    
+    if (peter == 1) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (peter == 2) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (peter == 3) {
+        fire = botfirehistory[botfirecount] -1
+    }
+    else if (peter == 4) {
+        fire = botfirehistory[botfirecount] -1
+
     var random = Math.floor((Math.random() * 4) + 1)
     var check = false;
     var hit = false
@@ -471,6 +486,7 @@ function hitBoatGuess () {
     }
     else if (random == 4) {
         fire = botfirehistory[botfirecount] - - 10
+
     }
 
     for (i=0;i<botfirecount+1;i++){
