@@ -559,16 +559,15 @@ function hitBoatGuess () {
 
 function randomGuess () {
     
-        playerTurn = true;
-        var fire = Math.floor((Math.random() * 99) + 0)
-        var check = false
-        var hit = false
+    playerTurn = true;
+    var fire = Math.floor((Math.random() * 99) + 0)
+    var check = false
+    var hit = false
 
         
-        for (i=0;i<botfirecount+1;i++){
-            if (fire == botfirehistory[i]) {
-                check = true
-            }
+    for (i=0;i<botfirecount+1;i++){
+        if (fire == botfirehistory[i]) {
+            check = true
         }
 
 
@@ -647,4 +646,5 @@ function randomGuess () {
 
         document.getElementById("playerDiv").style.display = "block";
         document.getElementById("guessDiv").style.display = "none";
+    }
 }
